@@ -1788,11 +1788,11 @@ _multi_arch() {
 			multi_qtbase=("-xplatform" "${qbt_cross_qtbase}")                                       # ${multi_qtbase[@]}
 
 			if [[ "${qbt_build_tool}" == 'cmake' ]]; then
-				multi_libtorrent=("-D CMAKE_CXX_COMPILER=${qbt_cross_host}-g++")        # ${multi_libtorrent[@]}
+				multi_libtorrent=("-D CMAKE_CXX_COMPILER=${qbt_cross_host}-g++  -Dwebtorrent=ON")        # ${multi_libtorrent[@]}
 				multi_double_conversion=("-D CMAKE_CXX_COMPILER=${qbt_cross_host}-g++") # ${multi_double_conversion[@]}
 				multi_qbittorrent=("-D CMAKE_CXX_COMPILER=${qbt_cross_host}-g++")       # ${multi_qbittorrent[@]}
 			else
-				multi_libtorrent=("toolset=${qbt_cross_boost:-gcc}") # ${multi_libtorrent[@]}
+				multi_libtorrent=("toolset=${qbt_cross_boost:-gcc} webtorrent=on") # ${multi_libtorrent[@]}
 				multi_qbittorrent=("--host=${qbt_cross_host}")       # ${multi_qbittorrent[@]}
 			fi
 			return
